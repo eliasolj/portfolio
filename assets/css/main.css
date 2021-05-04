@@ -1690,3 +1690,42 @@ input, select, textarea {
 #ohjelmistot {
     margin-bottom: 2em;
 }
+
+#scrumInfo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    text-align: center;
+    flex-wrap: wrap;
+    margin: auto;
+}
+
+#työkalut {
+    margin-bottom: 2em;
+}
+
+.scrumKuva {
+    width: 100%;
+    margin-bottom: 2em;
+}
+
+#meitsi {
+    width: 16vw;
+    float: right;
+    box-shadow: 0 0 8px 8px white inset;
+}
+
+#aboutMe > a > img {
+    margin: 0 1em;
+    width: 5vw;
+}
+
+#aboutMe a {
+    text-decoration: none;
+    border: none;
+}
+
+#eliasoljemark {
+    margin-top: 2em;
+}

@@ -43,7 +43,7 @@
 								<li><a href="#intro">Teknistä</a></li>
 								<li><a href="#work">Scrum</a></li>
 								<li><a href="#about">Reflektio</a></li>
-								<li><a href="#contact">Yleistä</a></li>
+								<li><a href="#contact">Kuka olen</a></li>
 								<!--<li><a href="#elements">Elements</a></li>-->
 							</ul>
 						</nav>
@@ -97,7 +97,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <h2 class="major">Johdanto</h2>
+                                <h2 class="major">Tavoitteet ja opit</h2>
                                 <p>
                                     Ennen kurssin alkua kirjoitin oppimistavoitteisiini, että oppisin mahdollisimman paljon frontend -puolen sovelluskehityksestä, sekä saisin hieman backend- 
                                     ja tietokantakokemusta. Halusin myös oppia versionhallinnan perusteet niin, että osaan käyttää Githubia oikein ryhmässä rakennettavan sovelluksen parissa. 
@@ -119,6 +119,23 @@
                                 </p>
                                 <h2 class="major">Esimerkkejä</h2>
                                 <h3>Summary.vue ja SummaryAnswer.vue toiminta</h3>
+                                <pre><code class="language-js">
+                                    setup(props, {emit}) {
+                                        const comment = ref('');
+                                        /**
+                                         * If Summary's progress changes, change comment.value to props.comment.
+                                         * This is useful when giving answer to new question or editing an old
+                                         * comment passed as a prop.
+                                         */
+                                        watch(() => props.progress,
+                                            () => {
+                                                comment.value = props.comment;
+                                            }
+                                        );
+                                        const goBack = () => {
+                                            emit("goBack");
+                                        }
+                                </code></pre>
                                 <p> 
                                     Alla oleva koodi SummaryAnswer.vue-komponentissa kutsuu saveAnswer() -funktiota, kun käyttäjä on saanut tekstinsä kirjoitettua fokusoituun ruutuun 
                                     ja klikkaa hiirellä seuraavaa tekstiruutua tai mitä tahansa kohtaa näytöllä. Tekstialueelle kirjoitettu teksti myös tallentuu kommenttina (comment). 
@@ -127,7 +144,7 @@
                                     &lt;textarea @focusout="saveAnswer()" id="textBox" name="textBox" v-model="comment" placeholder="KIRJOITA TÄHÄN"&gt;&lt;/textarea&gt;
                                 </code></pre>
                                 <p>
-                                    Alla näkyvä koodi kutsutaan siis, kun hiiri fokusoidaan tekstiruudulta muualle. Funktio välittää tekstiruutuun kirjoitetun tekstin, sekä viestin 
+                                    Alla näkyvä funktio kutsutaan siis, kun hiiri fokusoidaan tekstiruudulta muualle. Funktio välittää tekstiruutuun kirjoitetun tekstin, sekä viestin 
                                     "answer" äitikomponentille (Summary.vue) emit -funktiolla.
                                 </p>
                                 <pre><code class="language-js">
@@ -167,6 +184,17 @@
                                         goToPhase3();
                                     }
                                 </code></pre>
+                                <p>
+                                    Alla näkyvä koodi hakee localstoragesta cardArray -nimisen taulukon, ja etsii sieltä kunkin Phase2.vue:n eli toisen vaiheen valinnan, jonka 
+                                    käyttäjä on tehnyt ja tallentaa ne Summaryyn omiin muuttujiinsa.
+                                </p>
+                                <pre><code class="language-js">
+                                    const cardArray = JSON.parse(localStorage.getItem("cardArray"));
+                                    state.goalCard = cardArray.find(card => card.phase2selection === 'Tavoite');
+                                    state.challengeCard = cardArray.find(card => card.phase2selection === 'Haaste');
+                                    state.assetOneCard = cardArray.find(card => card.phase2selection === 'Voimavara1');
+                                    state.assetTwoCard = cardArray.find(card => card.phase2selection === 'Voimavara2');
+                                </pre></code>
                                 <h3>PDF tallennus JSPDF -kirjaston avulla</h3>
                                 <p>
                                     Alla oleva koodi on JSPDF -kirjaston avulla luotu savePDF() funktio, joka tallentaa määrätyllä tavalla tässä tapauksessa A4 kokoiselle paperille 
@@ -268,8 +296,123 @@
 						<!-- Work -->
 							<article id="work">
 								<h2 class="major">Scrum</h2>
-								<span class="image main"><img src="images/pic02.jpg" alt="" /></span>
-
+                                <div id="scrumInfo">
+                                    <div id="tiimi">
+                                        <h3>Tiimi</h3>
+								        <img src="images/scrum.png">
+                                        <ul>
+                                            <li>Elias Oljemark, Tekniikka, PO</li>
+                                            <li>Petteri Mattila, Tekniikka, SM</li>
+                                            <li>Sasu Salonen, Tekniikka</li>
+                                            <li>Kasperi Nissinen, Tekniikka, Testaaja</li>
+                                            <li>Topi Pajukko, Graafikko, Liiketoiminta</li>
+                                        </ul>
+                                    </div>
+                                    <div id="rooli">
+                                        <h3>Product Owner roolina</h3>
+                                        <img src="images/bossi.png">
+                                        <ul>
+                                            <li>Visio</li>
+                                            <li>Neuvottelutaidot</li>
+                                            <li>Esiintyminen ja omasta projektista kertominen</li>
+                                            <li>Kuunteleminen ja kommunikoiminen</li>
+                                            <li>Päätöstenteko ja perustelut</li>
+                                        </ul>
+                                    </div>
+                                    <div id="työkalut">
+                                        <h3>Scrumissa käytetyt työkalut</h3>
+                                        <img src="images/juttu.png">
+                                        <ul>
+                                            <li>Zenhub</li>
+                                            <li>Github</li>
+                                            <li>Roadmapit</li>
+                                            <li>Julkaisusuunnitelmat</li>
+                                            <li>Sprint Planning Day</li>
+                                            <li>User Stories & DOD</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <h2 class="major">Tavoitteet ja opit</h2>
+                                <p>
+                                    Projektin alkutaipaleilla minulla oli todella hämärä kuva scrumin toiminnasta ylipäätään projektinhallinnassa ja sovelluskehityksellisessä projektissa, 
+                                    koska mielessäni ei ollut yhtään konkreettista esimerkkiä scrumin toiminnasta käytännössä. Listasin kurssin alussa oppimistavoitteisiini, että haluan 
+                                    kokemusta haasteellisessa ja vastuullisessa tehtävässä scrum viitekehyksessä, sekä toimimaan projektin ns. johtavalla puolella "esimiehenä". Tällainen 
+                                    kokemus on erittäin tärkeää omaa urapolkuani ajatellen. Koin kurssin alussa, että johtajan roolissa minulla olisi paljon opittavaa, mutta olin valmis 
+                                    ottamaan haasteen vastaan. Toivoin myös oppivani mahdollisimman paljon scrum -viitekehyksestä ja sen tuomista mahdollisuuksista, koska tulevaa urapolkua 
+                                    ajatellen kaikki oppi scrumista on kullan arvoista.
+                                </p>
+                                <p>
+                                    Projektin aikana opin paljon scrumin toiminnasta, ja sprinteissä projektinhallinnallinen puoli kehittyikin kokoajan nousujohteisesti. Kurssin alussa 
+                                    esimerkiksi Zenhubin käyttäminen oli haastavaa, eikä tiimimme oikein osannut hyödyntää sen tuomia hyötyjä ja ominaisuuksia. Kurssin edetessä minulle 
+                                    kuitenkin selkeni jokaisen demon kohdalla enemmän ja enemmän projektinhallinnallisesta puolesta ja Zenhubin käytöstä. Viimeiseen sprinttiin mennessä 
+                                    tiimillämme oli sprinttikohtaisesti merkattu selkeästi sprintin tavoitteet, jokainen task oli pilkottu noin yhden työtunnin mittaisiin paloihin, 
+                                    jokaiseen taskiin oli merkattu DOD selkeästi, taskeilla oli omat labelit sekä taskit kulkivat pipelineissä reittinsä vaihe vaiheelta kohti taskin sulkemista. 
+                                    Taskit myös suljettiin viimeiseen sprinttiin mennessä ajallaan, joka oli ollut haastavaa kurssin aikana.
+                                </p>
+                                <p>
+                                    Edellistä kappaletta kirjoittaessani aloinkin itsekin ymmärtämään, kuinka paljon olen tämän kurssin aikana scrum prosessista ja product ownerin roolista lopulta 
+                                    oppinut. Olen oppinut Zenhubmaisen pipeline työskentelyn, jossa tehtävät jaetaan selkeästi. Olen oppinut tekemään roadmappeja ja julkaisusuunnitelmia, joita 
+                                    olen jokaista demoa varten laatinut. Olen oppinut suunnittelemaan tiimin kanssa sprinttikohtaisesti tavoitteet, jotka haluamme saavuttaa ja taskit jotka 
+                                    kukin tekee. Olen oppinut laatimaan käyttäjäkertomuksia ja niiden valmiuskriteerejä. Pääsin myös kurssin aikana työskentelemään asiakasyrityksen kanssa, 
+                                    joiden kanssa pidimme säännöllisesti palavereissa ja pääsin toteuttamaan tiimini kanssa asiakkaan visiota. Pidimme koko kurssin ajan asiakkaan vision tärkeimpänä 
+                                    asiana sprinttejä suunnitellessa, ja tästä syystä sprintteihin tulikin palavereissa nousteiden asioiden johdosta välillä muutoksia, sillä asiakkaan visio poikkesi 
+                                    omastamme.
+                                </p>
+                                <h2 class="major">Esimerkkejä oppimisesta</h2>
+                                <h3>Burndown -raportit</h3>
+                                <p>Kuten alla näkyy, alussa taskit suljettiin aivan liian myöhään, eikä sprinttiin oltu esimerkiksi merkitty tavoitteita. Tästä kuitenkin opittiin.</p>
+                                <img src="images/burndown1.png" class="scrumKuva">
+                                <p>
+                                    Loppua kohden opin, että kun sprintin tavoitteet on merkitty selkeästi, on helpompi sprint planningissa suunnitella tiimin kanssa taskeja ja 
+                                    niiden tekijöitä. Loppua kohden kaikki taskit oli pilkottu noin yhden työtunnin mittaisiksi paloiksi, sekä kaikki taskit suljettiin ajallaan 
+                                    kunhan tehtävä oli testattu, ja valmiuskriteerit (DOD) täytettiin.
+                                </p>
+                                <img src="images/burndown2.png" class="scrumKuva">
+                                <h3>Taskit</h3>
+                                <p>
+                                    Alla näkyvässä kuvassa huomaa, että alussa taskit ovat tehty hätiköiden ja liian suureksi. Myös valmiuskriteerit jääneet todella vajaiksi. Tästäkin 
+                                    syystä kurssin alussa taskien sulkemisessa kesti kauan, sillä taskia ei oltu pilkottu tarpeeksi.
+                                </p>
+                                <img src="images/task.png" class="scrumKuva">
+                                <p>
+                                    Alla kuva viimeisen sprintin selkeästä epicistä, jossa merkitty valmiuskriteerit, labelit, storypointit, milestonet ja tekijät selkeästi.
+                                </p>
+                                <img src="images/epic.png" class="scrumKuva">
+                                <p>
+                                    Seuraavassa kuvassa näkyy viimeisessä sprintissä tehty selkeä lyhyt yhden työtunnin mittainen task, jolla selkeät lyhyet valmiuskriteerit, 
+                                    omat labelit sekä oma tekijä.
+                                </p>
+                                <img src="images/task2.png" class="scrumKuva">
+                                <h3>Julkaisusuunnitelmat ja roadmapit</h3>
+                                <p>
+                                    Alla kuvia kurssin aikana tehdyistä julkaisusuunnitelmista ja roadmapeista, joita olen päässyt Miro -alustalla tekemään. Julkaisusuunnitelmatkin 
+                                    selkeyttivät huomattavasti sprinttien suunnittelua ja roadmappien suunnittelu selkeytti tulevaisuuden suunnitelmia viikkoja eteenpäin.
+                                </p>
+                                <img src="images/julkaisusuunnitelma.png" class="scrumKuva">
+                                <img src="images/julkaisusuunnitelma2.png" class="scrumKuva">
+                                <h3>Pitchaaminen ja visiosta kertominen</h3>
+                                <p>
+                                    Opin myös kurssin aikana kertomaan projektin visiosta ihmisille selkeästi ja nopeasti pitchaamalla. Todella hyvä alusta itselleni pitchauksen 
+                                    maailmaan oli PO -viikkotapaamisen yhteydessä pidetty pitchausharjoitus, josta sain opettajaltakin asti hyvää palautetta. Tämäkin kokemus rohkaisi 
+                                    itseäni, ja koen kehittyneeni tälläkin osa-alueella selkeästi, sillä aiemmin olen kokenut pahaakin esiintymisahdistusta.
+                                </p>
+                                <img src="images/powerpoint.png" class="scrumKuva">
+                                <h3>Työskentely scrumissa etänä</h3>
+                                <p>
+                                    Koin scrum työskentelyn etämuodossakin todella toimivaksi tiimini kanssa. Loimme yhdessä heti kurssin alussa Discord -kanavan, jossa toimimme jatkuvasti 
+                                    samassa puhechat -huoneessa koko työpäivän. Mikäli jollakin tiimin jäsenistä tuli ongelmia, apu oli lähellä kokoajan. Tämä toimintamalli oli myös todella 
+                                    toimiva product ownerin näkökulmasta, sillä tällä tavoin pysyin kokoajan tietoisena tiimin tekemisistä sekä ongelmista. Sprint planning myös toimi helposti 
+                                    myös etänä pallottelemalla ideoita ja hyviä nostoja, joiden kautta sprintin raamit saatiin aina rakennettua selkeästi, ja kaikki tiesivät omat tehtävänsä. 
+                                    Myös ulkoisen avun pyytäminen onnistui hyvin, sillä Frostigon Oy:n Antony Smal sekä vastuuopettajamme Teemu Pölkki olivat mukana Discord-kanavallamme.
+                                </p>
+                                <img src="images/discord.png" class="scrumKuva">
+                                <p>
+                                    Pidimme myös huolen työhyvinvoinnista, ja lounastaukojen yhteydessä harjoittelimmekin esimerkiksi maantiedollisia taitojamme yhdessä porukalla Geoguessr 
+                                    -pelin parissa. Tämäkin on hyvä esimerkki tiimin yhteishengen luomisesta sekä yhteisestä tekemisestä, jolla saimme myös työtehtävien ulkopuolista puheenaihetta 
+                                    sekä pääsimme yhdessä pitämään hauskaa. Työhyvinvoinnista huolehtiminen onkin todella tärkeä aspekti jaksamisen kannalta, jonka takia halusin tämänkin asian 
+                                    mainita.
+                                </p>
+                                <img src="images/geoguessr.png" class="scrumKuva">
 							</article>
 
 						<!-- About -->
@@ -280,7 +423,22 @@
 
 						<!-- Contact -->
 							<article id="contact">
-								<h2 class="major">Yleistä</h2>
+								<h2 class="major">Kuka olen</h2>
+                                <div id="aboutMe">
+                                    <a href="https://github.com/eliasolj">
+                                        <img src="images/github3.png">                            
+                                    </a>
+                                    <a href="https://www.linkedin.com/in/elias-oljemark-84b932192">
+                                        <img src="images/linkedin.png">                            
+                                    </a>
+                                    <a href="https://www.instagram.com/eliasoljemark/">
+                                        <img src="images/instagram.png">                            
+                                    </a>
+                                    <img src="images/meitsi.JPG" id="meitsi">
+                                </div>
+                                <h3 id="eliasoljemark">Elias Oljemark, 24 v.</h3>
+                                <h3>Jyväskylä</h3>
+                                <h3>Tradenomiopiskelija, tietojenkäsittely, JAMK</h3>
 							</article>
 
 						<!-- Elements -->
@@ -529,7 +687,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 
 				<!-- Footer -->
 					<footer id="footer">
-						<p class="copyright">&copy; Elias Oljemark N4150. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+						<p class="copyright">&copy; Elias Oljemark 2021. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
 					</footer>
 
 			</div>
