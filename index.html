@@ -25,7 +25,7 @@
 						</div>
 						<div class="content">
 							<div class="inner">
-								<h1>ELIAS OLJEMARK TICORPORATE PORTFOLIO</h1>
+								<h1>ELIAS OLJEMARK TICORPORATE 8 PORTFOLIO</h1>
 								<div id="infoBox">
                                     <img src="images/code.png">
                                     <h2>Sovelluskehitys</h2>
@@ -97,6 +97,19 @@
                                         </ul>
                                     </div>
                                 </div>
+                                <h2 class="major">Mikä on Ticorporate?</h2>
+                                <p>
+                                    Ticorporate 8 on Jyväskylän Ammattikorkeakoulun järjestämä koko kevään 2021 käsittävä yritystoimintaa simuloiva kurssi. Kurssin aikana opiskelijat 
+                                    pääsevät kokeilemaan sovellus- ja pelitekniikan tuotantoa simuloidussa yritysympäristössä käyttäen scrum -viitekehystä toiminnassaan. Opiskelijat 
+                                    jakautuvat omiin ryhmiinsä, joissa jokaisessa valmistuu oma projektinsa. Ryhmissä noudatetaan scrumin sisäistä hierarkiaa ja roolijakoa.
+                                </p> 
+                                <h2 class="major">Yleistä projektista</h2>
+                                <p>
+                                    Frostigon Oy ulkoisti Trigenda Oy:n toimeksiannon meidän ryhmällemme tämän kevään Ticorporate toteutusta varten. Me pääsimme ryhmämme kanssa toteuttamaan 
+                                    Trigenda Oy:n fyysisen tuotteen digitalisoinnin. Trigenda Oy:n tuote on Trigenda -menetelmä ja sen yhteydessä käytettävä fyysinen lauta ja kortit, joiden 
+                                    avulla saadaan esimerkiksi työympäristössä tai sosiaalityössä parannettua keskustelun laatua ja rakennettua rakentavaa keskustelua. Lisää tietoa löydät 
+                                    Trigendan <a href="https://www.trigenda.fi/">sivuilta</a>.
+                                </p>
                                 <h2 class="major">Tavoitteet ja opit</h2>
                                 <p>
                                     Ennen kurssin alkua kirjoitin oppimistavoitteisiini, että oppisin mahdollisimman paljon frontend -puolen sovelluskehityksestä, sekä saisin hieman backend- 
@@ -119,23 +132,15 @@
                                 </p>
                                 <h2 class="major">Esimerkkejä</h2>
                                 <h3>Summary.vue ja SummaryAnswer.vue toiminta</h3>
-                                <pre><code class="language-js">
-                                    setup(props, {emit}) {
-                                        const comment = ref('');
-                                        /**
-                                         * If Summary's progress changes, change comment.value to props.comment.
-                                         * This is useful when giving answer to new question or editing an old
-                                         * comment passed as a prop.
-                                         */
-                                        watch(() => props.progress,
-                                            () => {
-                                                comment.value = props.comment;
-                                            }
-                                        );
-                                        const goBack = () => {
-                                            emit("goBack");
-                                        }
-                                </code></pre>
+                                <p>
+                                    Alla vanha Summary.vue, joka muutettiin uuteen versioon, sillä ryhmämme oli ymmärtänyt asiakkaan vision yhteenvedosta väärin. Ryhmämme lähti kuitenkin 
+                                    nopeasti muuttamaan komponenttia kohti asiakkaan visiota, ja asiakas on ollut todella tyytyväinen tämänhetkiseen versioon.
+                                </p>
+                                <img src="images/oldSummary.png" class="scrumKuva">
+                                <p>
+                                    Alla Summary.vue uusi versio, jossa mukana käyttäjän omat palautteet käydystä keskustelusta.
+                                </p>
+                                <img src="images/summary2.png" class="scrumKuva">
                                 <p> 
                                     Alla oleva koodi SummaryAnswer.vue-komponentissa kutsuu saveAnswer() -funktiota, kun käyttäjä on saanut tekstinsä kirjoitettua fokusoituun ruutuun 
                                     ja klikkaa hiirellä seuraavaa tekstiruutua tai mitä tahansa kohtaa näytöllä. Tekstialueelle kirjoitettu teksti myös tallentuu kommenttina (comment). 
@@ -198,7 +203,7 @@
                                 <h3>PDF tallennus JSPDF -kirjaston avulla</h3>
                                 <p>
                                     Alla oleva koodi on JSPDF -kirjaston avulla luotu savePDF() funktio, joka tallentaa määrätyllä tavalla tässä tapauksessa A4 kokoiselle paperille 
-                                    määrätyt tiedot. Alla olevassa koodissa on tallennettu muun muassa käytetty korttipakka, valinnat, selitykset valinnoille ja nykyinen päivämäärä 
+                                    määrätyt tiedot. Alla olevassa koodissa on tallennettu localstoragesta muun muassa käytetty korttipakka, valinnat, selitykset valinnoille ja nykyinen päivämäärä 
                                     muuttujiin, jota kautta tiedot tulostuvat PDF -tiedostoon, jonka käyttäjä voi tallentaa itselleen paikallisesti. Koodi sisältää myös kaikki PDF
                                     -tiedoston tyylittelyt.
                                 </p>
@@ -291,6 +296,19 @@
                                 </code></pre>
                                 <p>Alla esimerkki JSPDF -kirjaston avulla tallennetusta PDF -tiedostosta.</p>
                                 <img src="images/pdfEsimerkki.png">
+                                <h3>Muuta</h3>
+                                <p>
+                                    Kurssin aikana rakensin muun muassa vanhat etusivut kokonaisuudessaan testaajamme Kasperin kanssa. Uusimpaan sovellusversioon 
+                                    etusivu otettiin pois käytöstä sovellusrakenteen selkeyttämiseksi. Kaikki rakentamamme sivut tehtiin responsiiviseksi ja graafisen 
+                                    suunnittelijamme mockupien pohjalta.
+                                </p>
+                                <img src="images/etusivu1.png" class="scrumKuva">
+                                <img src="images/etusivu2.png" class="scrumKuva">
+                                <img src="images/etusivu3.png" class="scrumKuva">
+                                <p>
+                                    Sovelluksen uusin kirjautumissivu.
+                                </p>
+                                <img src="images/kirjautuminen.png" class="scrumKuva">
 							</article>
 
 						<!-- Work -->
@@ -417,8 +435,37 @@
 
 						<!-- About -->
 							<article id="about">
-								<h2 class="major">Reflektio</h2>
-								<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
+								<h2 class="major">Reflektio ja yhteenveto</h2>
+                                <h3>Opit</h3>
+								<p>
+                                    Tekniikka -välilehdellä olen maininnut oppimistavoitteitani, sekä kuinka hyvin olen niitä saavuttanut. Frontend -tekniikan osalta olen oppinut laajasti 
+                                    uusia asioita, JavaScript osaamiseni on vahvistunut todella paljon, eikä minun tarvitse enää tukeutua Googleen tai muuhun apuun jatkuvasti esimerkiksi laajempia 
+                                    funktioita kirjoittaessani. Olen myös oppinut paljon responsiivisesta web-suunnittelusta sekä sen toteuttamisesta ja suunnittelijan vision toteuttamisesta 
+                                    suoraan mockupista web-sovellukseen implementoiden. Koen, että frontend -osaamiseni on siis kurssin aikana kehittynyt useita askeleita eteenpäin ja koen, 
+                                    että kurssi on ollut itselleni henkilökohtaisella tasolla todella opettavainen kokemus tekniseltä puolelta. Olin myös merkinnyt oppimistavoitteisiini, että haluan 
+                                    kurssin jälkeen osata käyttää luontevasti versionhallinnassa Githubia ja tässäkin tavoitteessa olen onnistunut. Tällä hetkellä Githubin käyttö on luontevaa 
+                                    ja helppoa. Ennen kurssia kokemusta esimerkiksi Githubista ei juurikaan ollut.
+                                </p>
+                                <p>
+                                    Scrum -välilehdellä olen pohtinut kurssin alussa merkitsemiäni oppimistavoitteita ja niiden saavuttamista. Kurssin aikana olen oppinut product ownerin roolista 
+                                    ja scrumin toiminnasta todella laajasti. Ennen kurssia tietämykseni oli vain pintaraapaisu nykyiseen osaamiseen ja ymmärrykseen verrattuna. Koen, että Ticorporate 
+                                    kurssi opetti itselleni kaiken tarvittavan scrumin perusteista ja tällä hetkellä ymmärränkin scrum -viitekehyksen perusperiaatteet ja ymmärrän roolien 
+                                    tarkoituksen ja tehtävät. Opin myös projektinhallinnasta Zenhubissa koko kurssin ajan uusia asioita. Tiimityöskentely scrumissa sekä projektinhallinta 
+                                    luonnistuu tällä hetkellä jokapäiväisenä rutiinina, kun kurssin alussa ymmärrys tästä toiminnasta oli lähes olematon.
+                                </p>
+                                <h3>Kehitettävää</h3>
+                                <p>
+                                    Olin merkinnyt kurssin oppimistavoitteisiin, että olisin halunnut oppia uusia asioita backend- ja tietokantapuolelta. Kurssin hektinen aikataulu 
+                                    sekä tiimiläisten laaja aiempi osaaminen kuitenkin muuttivat tilanteen niin, että jäin puhtaasti frontend -kehityksen puolelle, enkä kerennyt 
+                                    kurssin aikana juurikaan kehittämään taitojani backend- ja tietokantapuolella. Pääsin kuitenkin tutustumaan tiimiläisteni tuotoksiin ja sitä kautta 
+                                    opin kuitenkin uusia asioita Noden toiminnasta.
+                                </p>
+                                <p>
+                                    Product ownerin roolissa kehitettävänä asiana voisin mainita, että voisin rohkeammin johtaa tiimiäni ja kertoa vielä kuuluvammin oman mielipiteeni. 
+                                    Vaikka tiimityöskentely ja omien tiimiläisten kuunteleminen ja heidän vision mukaanottaminen onkin äärimmäisen tärkeää, pitää myös muistaa, että product 
+                                    ownerilla on laajin käsitys asiakkaan ja tuotteen visiosta. Koen kuitenkin, että kurssin aikana oma toimintani tiimiläisiäni kuunnellessa ei aiheuttanut 
+                                    ongelmia.
+                                </p>
 							</article>
 
 						<!-- Contact -->
